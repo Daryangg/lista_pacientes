@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:layout="http://www.w3.org/1999/xhtml">
+
+  <body>
+    <header th:fragment="header">
+      <nav class="navbar bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"></a>
+    
+          <div class=" navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active text-center" aria-current="page" href="/">Inicio</a>
+              </li>
+             
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <!--MESSAGES-->  
+
+     <div class="alert alert-succes alert-dismissable" role="alert" th:if="${succes != null}">
+        <label th:text="${succes}"></label>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+     </div>
+
+     <div class="alert alert-danger alert-dismissable" role="alert" th:if="${danger != null}">
+        <label th:text="${danger}"></label>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+     </div>
+
+     <div class="alert alert-warning alert-dismissable" role="alert" th:if="${warning != null}">
+        <label th:text="${warning}"></label>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+     </div>
+
+    </header>
+
+  </body>
+</html>
