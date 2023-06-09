@@ -1,74 +1,53 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:layout="http://www.w3.org/1999/xhtml">
-  <head th:replace="index :: head" />
-  <body>
-    <header th:replace="index :: header"></header>
 
-    <div class="container py-9 py-lg-11">
-      <h3 th:text="${titulo}" class="text-center"></h3>
-      <div class="row justify-content-center">
-        <div class="col-7">
-          <form
-            th:action="@{/paciente/save}"
-            th:object="${paciente}"
-            method="post"
-          >
-          <input
-          type="hidden"
-          th:field="*{id}"
-          class="form-control"
-          id="id"
-        />
-            <div class="row mb-5">
-              <label for="name" class="col-sm-2 col-form-label">Nombre</label>
-              <div class="col-sm-10">
-                <input
-                  required
-                  placeholder="Escribe el nombre aqui"
-                  type="text"
-                  th:field="*{name}"
-                  class="form-control"
-                  id="name"
-                />
-              </div>
-            </div>
-            <div class="row mb-5">
-              <label for="debt" class="col-sm-2 col-form-label">Deuda</label>
-              <div class="col-sm-10">
-                <input
-                  required
-                  placeholder="Escribe la deuda aqui"
-                  type="number"
-                  th:field="*{debt}"
-                  class="form-control"
-                  id="debt"
-                />
-              </div>
-            </div>
-            <div class="row mb-5">
-              <label for="date" class="col-sm-2 col-form-label">Fecha</label>
-              <div class="col-sm-10">
-                <input
-                  required
-                  placeholder="Escribe
-                    la fecha en esta forma (mm/dd/aaaa)"
-                  type="date"
-                  th:field="*{date}"
-                  class="form-control"
-                  id="date"
-                />
-              </div>
-            </div>
+<head th:replace="index :: head" />
 
-            <button
-              type="submit"
-              class="btn btn-primary"
-              th:text="Guardar"
-            ></button>
-          </form>
-        </div>
+<body>
+  <header th:replace="index :: header"></header>
+
+  <div class="container py-9 py-lg-11">
+    <h3 th:text="${titulo}" class="text-center"></h3>
+    <div class="row justify-content-center">
+      <div class="col-7">
+        <form th:action="@{/paciente/save}" th:object="${paciente}" method="post">
+          <input type="hidden" th:field="*{id}" class="form-control" id="id" />
+          <div class="row mb-5">
+            <label for="name" class="col-sm-2 col-form-label">Nombre</label>
+            <div class="col-sm-10">
+              <input required placeholder="Escribe el nombre aqui" type="text" th:field="*{name}" class="form-control"
+                id="name" />
+            </div>
+          </div>
+          <div class="row mb-5">
+            <label for="debt" class="col-sm-2 col-form-label">Deuda</label>
+            <div class="col-sm-10">
+              <input required placeholder="Escribe la deuda aqui" type="number" th:field="*{debt}" value="0"
+                class="form-control" id="debt" />
+            </div>
+          </div>
+          <div class="row mb-5">
+            <label for="cuot" class="col-sm-2 col-form-label">Cuota</label>
+            <div class="col-sm-10">
+              <input required placeholder="Escribe la cuopta mensual aqui" type="number" th:field="*{cuot}" value="0"
+                class="form-control" id="cuot" />
+            </div>
+          </div>
+          <div class="row mb-5">
+            <label for="date" class="col-sm-2 col-form-label">Fecha</label>
+            <div class="col-sm-10">
+              <input required placeholder="Escribe
+                    la fecha en esta forma (mm/dd/aaaa)" type="date" th:field="*{date}" class="form-control"
+                id="date" />
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" th:text="Guardar"></button>
+        </form>
       </div>
     </div>
-    <script th:src="@{/assets/js/theme.bundle.js}"></script>
-  </body>
+  </div>
+  <script th:src="@{/assets/js/theme.bundle.js}"></script>
+</body>
+
 </html>

@@ -31,6 +31,8 @@ public class Paciente implements Serializable {
     @Column(nullable = false)
     private Integer debt;
     @Column(nullable = false)
+    private Integer cuot;
+    @Column(nullable = false)
     private String date;
 
 }
