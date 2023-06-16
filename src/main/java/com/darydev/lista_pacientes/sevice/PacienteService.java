@@ -14,5 +14,6 @@ public interface PacienteService {
     public Paciente saveOrUpdate(Paciente p);
     public void delete(Long id);
     public void deleteAll();
+    public Paciente getMaxDebt();
 
 }

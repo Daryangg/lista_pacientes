@@ -1,7 +1,6 @@
 package com.darydev.lista_pacientes.sevice;
 
 import java.util.List;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +17,7 @@ public class PacientesServiceImpl implements PacienteService {
 
    @Override
    public List<Paciente> getPacientes() {
-      return repo.findAllOrderByDate()
-            .stream().collect(Collectors.toList());
+      return repo.findAllOrderByDate().stream().collect(Collectors.toList());
    }
 
    @Override
@@ -41,5 +39,17 @@ public class PacientesServiceImpl implements PacienteService {
    public Paciente getPacienteById(Long id) {
       return repo.findById(id)
             .orElse(null);
+   }
+
+   @Override
+   public Paciente getMaxDebt() {
+      int max = repo.findAll()
+            .stream()
+            .mapToInt(Paciente::getDebt)
+            .max()
+            .orElse(0);
+
+      
+      return repo.findByDebt(max);
    }
 }

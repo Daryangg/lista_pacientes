@@ -14,4 +14,6 @@ public interface PacienteRepo extends JpaRepository<Paciente, Long > {
     @Query("select p from Paciente p order by p.date")
     public List<Paciente> findAllOrderByDate();
 
+    public Paciente findByDebt(Integer debt);
+
 }

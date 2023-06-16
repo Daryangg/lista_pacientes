@@ -1,7 +1,6 @@
 package com.darydev.lista_pacientes.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
