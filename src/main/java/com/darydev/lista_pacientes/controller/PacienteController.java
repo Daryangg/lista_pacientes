@@ -26,6 +26,12 @@ public class PacienteController {
         return "login";
     }
 
+    @GetMapping("/cart.json")
+    public String greetings(Model model) {
+
+       return "redirect:/";
+
+    }
    
 
     @GetMapping()
