@@ -122,7 +122,7 @@
                 <td th:text="${p.name}"></td>
                 <td th:text="${p.debt}"></td>        
                 <td th:text="${p.cuot}"></td>
-                <td th:text="${12}"></td>
+                <td th:text="${p.payments.size}"></td>
                 <td th:text="${p.date}"></td>
                 <td>
                   <a class="btn btn-primary btn-sm" th:href="@{/put/} + ${p.id}"><em class="bx bx-edit"></em></a>

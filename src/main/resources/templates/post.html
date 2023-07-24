@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:layout="http://www.w3.org/1999/xhtml">
 
-<head th:replace="index :: head" />
+<head th:replace="index :: head"></head>
 
 <body>
   <header th:replace="index :: header"></header>
@@ -15,7 +15,7 @@
           <div class="row mb-5">
             <label for="name" class="col-sm-2 col-form-label">Nombre</label>
             <div class="col-sm-10">
-              <input required placeholder="Escribe el nombre aqui" type="text" th:field="*{name}" class="form-control"
+              <input required placeholder="Escribe el nombre aquí" type="text" th:field="*{name}" class="form-control"
                 id="name" />
             </div>
           </div>
@@ -23,7 +23,7 @@
           <div class="row mb-5">
             <label for="debt" class="col-sm-2 col-form-label">Deuda</label>
             <div class="col-sm-10">
-              <input required placeholder="Escribe la deuda aqui" type="number" th:field="*{debt}" value="0"
+              <input required placeholder="Escribe la deuda aquí" type="number" th:field="*{debt}" value="0"
                 class="form-control" id="debt" />
             </div>
           </div>
@@ -31,25 +31,42 @@
           <div class="row mb-5">
             <label for="cuot" class="col-sm-2 col-form-label">Cuota</label>
             <div class="col-sm-10">
-              <input required placeholder="Escribe la cuota mensual aqui" type="number" th:field="*{cuot}" value="0"
+              <input required placeholder="Escribe la cuota mensual aquí" type="number" th:field="*{cuot}" value="0"
                 class="form-control" id="cuot" />
             </div>
           </div>
 
-          <div th:if="${id != null}" class="row mb-5">
-            <label for="pay" th:text="@{'Pagos Realizados : ' + '12'}"></label>
-          </br>
+          <div th:if="${paciente.id != null}" class="row mb-5">
+            <nav class="collapse-group nav collapse d-flex flex-column">
+              <div class="collapse d-block">
+                <div class="nav flex-column">
+                  <a th:text="'Pagos : ' + ${paciente.payments.size()}" href="#pays" class="nav-link collapsed"
+                    data-bs-toggle="collapse" aria-expanded="true"> </a>
+                  <div class="collapse" id="pays">
+                    <div class="row">
+                      <div th:each="pay, i : ${paciente.payments}" class="nav nav-level-2 flex-column">
+                        <label th:text="'Monto Pago #' + ${i.index + 1 }" class="col-sm-2 col-form-label"></label>
+                        <input type="number" th:field="*{payments[__${i.index}__].mount}" value="0" class="form-control"
+                          id="paymentAmount" />
+
+                        <label th:text="'Fecha Pago #' + ${i.index + 1}" class="col-sm-2 col-form-label"></label>
+                        <input type="date" th:field="*{payments[__${i.index}__].date}" value="0" class="form-control"
+                          id="paymentDate" />
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </nav>
+            </br>
           </div>
-
-        
-
 
           <div class="row mb-5">
             <label for="date" class="col-sm-2 col-form-label">Fecha</label>
             <div class="col-sm-10">
-              <input required placeholder="Escribe
-                    la fecha en esta forma (mm/dd/aaaa)" type="date" th:field="*{date}" class="form-control"
-                id="date" />
+              <input required placeholder="Escribe la fecha en esta forma (mm/dd/aaaa)" type="date" th:field="*{date}"
+                class="form-control" id="date" />
             </div>
           </div>
 

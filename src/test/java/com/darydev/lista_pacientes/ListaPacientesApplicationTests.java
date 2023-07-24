@@ -16,7 +16,7 @@ class ListaPacientesApplicationTests {
 	@Test
 	void addPaciente() {
 		Paciente paciente = new Paciente();
-		paciente.setName("pedro");
+		paciente.setName("manuel");
 		paciente.setDebt(2000);
 		paciente.setCuot(32);
 		paciente.setDate("2022-06-20");
