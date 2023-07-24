@@ -35,6 +35,10 @@
             <li class="nav-item">
               <a class="nav-link active text-center" aria-current="page" href="/">Inicio</a>
             </li>
+            <li class="nav-item text-end">
+              <form th:action="@{/logout}" method="post">
+                <input class="btn-primary btn" type="submit" value="Salir"/>
+            </form>
           </ul>
         </div>
       </div>
@@ -106,25 +110,26 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Deuda</th>
                 <th scope="col">Cuota Men</th>
+                <th scope="col">Pagos</th>
                 <th scope="col">Fecha</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
-
               </tr>
             </thead>
             <tbody>
               <tr th:each="p, i : ${pacientes}">
                 <th scope="row" th:text="${i.index + 1}"></th>
                 <td th:text="${p.name}"></td>
-                <td th:text="${p.debt}"></td>
+                <td th:text="${p.debt}"></td>        
                 <td th:text="${p.cuot}"></td>
+                <td th:text="${p.payments.size}"></td>
                 <td th:text="${p.date}"></td>
                 <td>
                   <a class="btn btn-primary btn-sm" th:href="@{/put/} + ${p.id}"><em class="bx bx-edit"></em></a>
                 </td>
                 <td>
                   <a class="btn btn-danger btn-sm" th:href="@{/delete/} + ${p.id}"
-                    onclick="return confirm('Estas seguro que desea eliminar')"><em class="bx bx-trash"></em></a>
+                    onclick="return confirm('Esta seguro que desea eliminar')"><em class="bx bx-trash"></em></a>
                 </td>
               </tr>
             </tbody>

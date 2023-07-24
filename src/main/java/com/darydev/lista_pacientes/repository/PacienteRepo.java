@@ -11,7 +11,9 @@ import com.darydev.lista_pacientes.model.Paciente;
 @Repository
 public interface PacienteRepo extends JpaRepository<Paciente, Long > {
 
-    @Query("select p from Paciente p order by p.date")
-    public List<Paciente> findAllOrderByDate();
+    @Query("select p from Paciente p order by p.name")
+    public List<Paciente> findAllOrderByName();
+
+    public Paciente findByDebt(Integer debt);
 
 }

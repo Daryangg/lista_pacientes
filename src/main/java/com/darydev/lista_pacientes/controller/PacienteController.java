@@ -1,13 +1,8 @@
 package com.darydev.lista_pacientes.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +20,20 @@ public class PacienteController {
     @Autowired
     private PacienteService service;
 
+    @GetMapping("/login")
+    public String login(Model model) {
+        model.addAttribute("pacientes", service.getPacientes());
+        return "login";
+    }
+
+    @GetMapping("/cart.json")
+    public String greetings(Model model) {
+
+       return "redirect:/";
+
+    }
+   
+
     @GetMapping()
     public String findall(Model model) {
 
@@ -37,7 +46,7 @@ public class PacienteController {
     public String post(Model model) {
         Paciente paciente = new Paciente();
 
-        model.addAttribute("titulo", "Crear Nuevo Paciente Paciente");
+        model.addAttribute("titulo", "Crear Nuevo Paciente");
         model.addAttribute("paciente", paciente);
         return "post";
     }
@@ -46,7 +55,6 @@ public class PacienteController {
     public String put(@PathVariable("id") Long id, Model model, RedirectAttributes att) {
 
         try {
-            String x = service.getPacienteById(id).getName();
 
             model.addAttribute("titulo", "Actualizar Paciente");
             model.addAttribute("paciente", service.getPacienteById(id));
@@ -94,6 +102,16 @@ public class PacienteController {
             att.addFlashAttribute("danger", "Accion Denegada");
             return "redirect:/";
         }
+    }
+
+    @GetMapping("/max")
+    public String getMax(Model model) {
+
+        model.addAttribute("p", service.getMaxDebt());
+        service.getMaxDebt().getId();
+
+        return "redirect:/put/" + service.getMaxDebt().getId();
+
     }
 
 }
