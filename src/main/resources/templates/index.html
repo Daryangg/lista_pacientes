@@ -5,22 +5,15 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <link rel="stylesheet" th:href="@{/assets/fonts/boxicons/css/boxicons.min.css}" />
-
-  <!--AOS Animations-->
   <link rel="stylesheet" th:href="@{/assets/vendor/node_modules/css/aos.css}" />
-
-  <!--Iconsmind Icons-->
   <link rel="stylesheet" th:href="@{/assets/fonts/iconsmind/iconsmind.css}" />
-
-  <!--Google fonts-->
   <link rel="preconnect" th:href="@{https://fonts.googleapis.com}" />
   <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin />
-  <link
-    th:href="@{https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Source+Serif+Pro:ital@0;1&display=swap}"
-    rel="stylesheet" />
-  <!-- Main CSS -->
+  <link th:href="@{https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Source+Serif+Pro:ital@0;1&display=swap}" rel="stylesheet" />
   <link th:href="@{/assets/css/theme.min.css}" rel="stylesheet" />
+
   <title>Lista-Pacientes</title>
 </head>
 
@@ -38,7 +31,8 @@
             <li class="nav-item text-end">
               <form th:action="@{/logout}" method="post">
                 <input class="btn-primary btn" type="submit" value="Salir"/>
-            </form>
+              </form>
+            </li>
           </ul>
         </div>
       </div>
@@ -46,8 +40,8 @@
 
     <!--MESSAGES-->
 
-    <div th:if="${succes != null}" class="alert alert-succes bg-success alert-dismissible fade show" role="alert">
-      <label th:text="${succes}"></label>
+    <div th:if="${success != null}" class="alert alert-success bg-success alert-dismissible fade show" role="alert">
+      <label th:text="${success}"></label>
       <button type="button" class="btn-close p-0 top-50 translate-middle-y me-2" data-bs-dismiss="alert"
         aria-label="Close">
         <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" width="16" height="16"
@@ -86,16 +80,12 @@
         </svg>
       </button>
     </div>
-
-
   </header>
 
-
-
   <section class="mt-4">
-    <div class="container  py-2 py-lg-6">
+    <div class="container py-2 py-lg-6">
       <div class="table-responsive row justify-content-center">
-        <div class=" col-12">
+        <div class="col-12">
           <div class="d-flex mb-4 align-items-center">
             <h4 class="mb-0 me-3">Lista de Pacientes</h4>
             <div class="pt-1 border-bottom flex-grow-1"></div>
@@ -120,7 +110,7 @@
               <tr th:each="p, i : ${pacientes}">
                 <th scope="row" th:text="${i.index + 1}"></th>
                 <td th:text="${p.name}"></td>
-                <td th:text="${p.debt}"></td>        
+                <td th:text="${p.debt}"></td>
                 <td th:text="${p.cuot}"></td>
                 <td th:text="${p.payments.size}"></td>
                 <td th:text="${p.date}"></td>

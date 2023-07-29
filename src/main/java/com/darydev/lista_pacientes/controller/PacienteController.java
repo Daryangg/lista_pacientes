@@ -92,10 +92,10 @@ public class PacienteController {
 
             service.saveOrUpdate(paciente);
             if (f) {
-                att.addFlashAttribute("succes", "Accion Exitosa!");
+                att.addFlashAttribute("success", "Accion Exitosa!");
                 return "redirect:/post";
             } else {
-                att.addFlashAttribute("succes", "Accion Exitosa!");
+                att.addFlashAttribute("success", "Accion Exitosa!");
                 return "redirect:/";
             }
         } catch (Exception e) {
@@ -111,6 +111,15 @@ public class PacienteController {
         service.getMaxDebt().getId();
 
         return "redirect:/put/" + service.getMaxDebt().getId();
+
+    }
+
+     @GetMapping("/delete_all")
+    public String deleteAll(Model model) {
+
+       service.deleteAll();
+
+        return "redirect:/";
 
     }
 

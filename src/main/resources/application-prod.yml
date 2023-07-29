@@ -2,9 +2,9 @@ spring:
    # Database
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://dpg-ci1917m7avjfjallhm50-a.oregon-postgres.render.com:5432/listajorgedb
-    username: listajorgedb_user
-    password: TSCOh7VU8NwViLxsezu8aFBIrwi4aRRg
+    url: jdbc:postgresql://dpg-civfc4tiuiedpv01lnmg-a.oregon-postgres.render.com:5432/listajorgedb_73b6
+    username: jorge
+    password: aVsbxZCY1br3dB98p9Eg8BeI6BM5Le4O
   # JPA properties
   jpa:
     hibernate:
